@@ -1,0 +1,129 @@
+.container{
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    padding: 5px;
+}
+
+fieldset {
+  border: 2px dotted #ccc;
+  // background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  padding: 10px;
+  margin-bottom: 20px;
+  justify-items: center;
+
+  .two-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+
+    label {
+
+      display: block;
+      margin-bottom: 10px;
+
+      input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+
+        &:focus {
+          outline: none;
+          border-color: #007bff;
+        }
+      }
+
+      span {
+        // margin: 5px;
+        color: #6d6a6a;
+        width: 100%;
+        display: inline-block;
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+    }
+  }
+}
+
+
+////scss styles for table
+table {
+  width: 100%;
+
+}
+
+.mat-elevation-z8 {
+  margin-bottom: 15px;
+  text-align: center;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+.mat-elevation-z8 th, .mat-elevation-z8 td {text-align: center;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.mat-elevation-z8 th {
+  border: 1px solid #ddd;
+  background-color: #9bb8f5;
+  text-align: center;
+}
+
+.mat-elevation-z8 tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.mat-elevation-z8 tr:hover {
+  background-color: #ddd;
+}
+
+// .mat-elevation-z8 td:first-child {
+//   text-align: center;
+//   width: 50px;
+// }
+
+
+.sub-button {
+  width: 150px;
+  margin: 15px;
+  background-color: #1f8bff;
+  border: none;
+  color: black ;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transition effect on hover */
+
+  &:hover {
+    background-color: #459fff; /* Button background color on hover */
+    color: #000;
+    font-weight: 700;
+
+  }
+}
+.red-button {
+  width: 150px;
+  margin: 15px;
+  background-color: orangered;
+  border: none;
+  color: black ;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transition effect on hover */
+
+  &:hover {
+    background-color: red; /* Button background color on hover */
+    color: #000;
+    font-weight: 700;
+
+  }
+}

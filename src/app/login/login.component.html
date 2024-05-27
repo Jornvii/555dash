@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="header">
+    <h1>Login</h1>
+  </div>
+
+  <mat-card>
+    <mat-card-content>
+      <form class="example-form" [formGroup]="loginForm" (ngSubmit)="proceedLogin()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Emp.Code</mat-label>
+          <input matInput formControlName="Emp_Code" />
+        </mat-form-field>
+
+        <div class="btn-log">
+          <button mat-raised-button color="primary" style="margin: 10px" type="submit">
+            Login
+          </button>
+          <p>
+            Don't have an account yet?
+            <a routerLink="/register">Register here</a>
+          </p>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

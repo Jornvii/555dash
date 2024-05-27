@@ -1,0 +1,351 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  // padding: .5rem;
+  width: 100%;
+  margin: 0 auto;
+
+  .container {
+    grid-column: span 3;
+    background: #f7f7f7;
+    padding: 0.5rem;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    form {
+      border: 2px dotted #bdb7b7;
+      padding: 1em;
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+
+      fieldset {
+        border: none;
+        padding: 0;
+        display: contents; // Use contents to ensure fieldsets don't interfere with the grid layout
+
+        label {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+
+          textarea,
+          mat-select {
+            margin-top: 0.5rem;
+            padding: 0.4rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+          }
+
+          input {
+            margin-top: 0.5rem;
+            padding: 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+          }
+
+          .custom-select,
+          mat-select {
+            display: block;
+          }
+        }
+      }
+
+      .btns {
+        grid-column: span 3;
+        // display: flex;
+        // justify-content: space-between;
+
+        .sub-button {
+          width: 160px;
+          margin: 15px;
+          background-color: #1f8bff;
+          border: none;
+          color: black;
+          padding: 10px 20px;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          transition:
+            background-color 0.3s ease,
+            color 0.3s ease;
+          /* Transition effect on hover */
+
+          &:hover {
+            background-color: #459fff;
+            /* Button background color on hover */
+            color: #000;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            transform: translateY(-3px);
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+          }
+        }
+
+        .red-button {
+          width: 150px;
+          margin: 15px;
+          background-color: orangered;
+          border: none;
+          color: black;
+          padding: 10px 20px;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          transition:
+            background-color 0.3s ease,
+            color 0.3s ease;
+          /* Transition effect on hover */
+
+          &:hover {
+            background-color: red;
+            /* Button background color on hover */
+            color: #000;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            transform: translateY(-3px);
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+          }
+        }
+      }
+    }
+  }
+
+  // /table style for table
+  .table-container {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+  /* your-component.component.css */
+.selected {
+  background-color: #b1cfff !important; /* Adjust the color as needed */
+}
+
+
+  table {
+    width: 100%;
+  }
+}
+
+.partNO {
+  input {
+    background-color: #b9cce968;
+    margin-top: 0.5rem;
+    padding: 0.6rem;
+    border: 1px solid #323131;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+}
+
+.sub-button {
+  width: 160px;
+  margin: 15px;
+  background-color: #1f8bff;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  /* Transition effect on hover */
+
+  &:hover {
+    background-color: #459fff;
+    /* Button background color on hover */
+    color: #000;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+
+    form {
+      grid-template-columns: 1fr;
+
+      .btns {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  }
+}
+
+.table-container {
+  max-width: 100%;
+  margin: 0 auto;
+
+  h3 {
+    text-align: center;
+    font-weight: 900;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+      // padding: 12px 20px;
+      text-align: left;
+      border-bottom: 1px solid #a2a2a2;
+    }
+
+    th {
+      background-color: #b9d0d7;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: #333;
+    }
+
+    td {
+      font-size: 14px;
+      color: #555;
+    }
+
+    tr {
+      transition: background-color 0.3s;
+    }
+
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    .input-cell {
+      padding: 0 !important;
+    }
+
+    .input-field {
+      width: 100px;
+    }
+
+    .input-element {
+      width: 100%;
+    }
+
+    .mat-icon-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+
+
+      .delete-icon {
+        color: red !important;
+      }
+    }
+  }
+
+  .mat-paginator {
+    // margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    button {
+      margin: 0 5px;
+    }
+  }
+}
+
+// Responsive adjustments
+// Responsive adjustments for tablets and below
+@media (max-width: 1024px) {
+  .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+
+    .container {
+      grid-column: span 2;
+    }
+
+    form {
+      grid-template-columns: repeat(2, 1fr);
+
+      .btns {
+        grid-column: span 2;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+
+    .container {
+      grid-column: span 1;
+    }
+
+    form {
+      grid-template-columns: 1fr;
+
+      .btns {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  }
+}
+
+// Responsive adjustments for mobile devices
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 0.5rem;
+
+    .container {
+      padding: 0.5rem;
+
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    form {
+      gap: 0.5rem;
+
+      fieldset .two-cols,
+      label {
+        gap: 0.25rem;
+
+        textarea,
+        mat-select,
+        input {
+          font-size: 0.875rem;
+        }
+      }
+
+      .btns {
+
+        .sub-button,
+        .btns-clear {
+          padding: 0.5rem 1rem;
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+}

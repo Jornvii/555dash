@@ -1,0 +1,80 @@
+<div class="wrapper">
+  <div class="container">
+    <!-- <h3>Date : 26/04/2024</h3> -->
+    <br>
+    <fieldset>
+      <div class="two-cols">
+        <label>
+          Doc No *
+          <input type="text" name="First name" placeholder="Enter Doc number" required />
+        </label>
+        <label>
+          Date *
+          <span>24/04/2024</span>
+        </label>
+      </div>
+      <button class="sub-button">Search 🔍</button>
+      <!-- <button class="red-button">Clear 🗑️</button> -->
+    </fieldset>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+      <ng-container matColumnDef="ReqDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Request Date</th>
+        <td mat-cell *matCellDef="let element">{{ element.ReqDate }}</td>
+      </ng-container>
+      <ng-container matColumnDef="issueDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Issue</th>
+        <td mat-cell *matCellDef="let element">{{ element.issueDate }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="DocNo">
+        <th mat-header-cell *matHeaderCellDef>Doc No.</th>
+        <td mat-cell *matCellDef="let element">{{ element.DocNo }}</td>
+      </ng-container>
+      <ng-container matColumnDef="part">
+        <th mat-header-cell *matHeaderCellDef>Part No.</th>
+        <td mat-cell *matCellDef="let element">{{ element.part }}</td>
+      </ng-container>
+
+
+
+      <ng-container matColumnDef="gmodel">
+        <th mat-header-cell *matHeaderCellDef>Gauge Model</th>
+        <td mat-cell *matCellDef="let element">{{ element.gmodel }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="process">
+        <th mat-header-cell *matHeaderCellDef>Process</th>
+        <td mat-cell *matCellDef="let element">{{ element.process }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="mc">
+        <th mat-header-cell *matHeaderCellDef>MC</th>
+        <td mat-cell *matCellDef="let element">{{ element.mc }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="viewdetial">
+        <th mat-header-cell *matHeaderCellDef>Detial</th>
+        <td mat-cell *matCellDef="let element">
+          <!-- click to print pdf  -->
+          <button mat-icon-button color="primary" (click)="openDetailView(element)">
+
+            <mat-icon>visibility</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <!-- (click)="downloadPDF()"> -->
+      <!-- (click)="openDetailviewdetial(element) -->
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <!-- <mat-paginator [pageSizeOptions]="[5, 25, 50]" showFirstLastButtons></mat-paginator> -->
+  </div>
+</div>

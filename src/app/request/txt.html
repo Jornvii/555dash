@@ -1,0 +1,234 @@
+<div class="wrapper">
+  <div class="container">
+    <h1>Form Request</h1>
+
+
+    <form [formGroup]="requestForm" (ngSubmit)="onSubmit()" id="ft-form" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
+      <fieldset>
+        <div class="two-cols">
+          <label>
+            Division
+            <div class="custom-select">
+              <mat-select [(value)]="selectedDivision">
+                <mat-option *ngFor="let division of divisions" [value]="division.division">
+                  {{ division.viewDivision }}
+                </mat-option>
+              </mat-select>
+            </div>
+          </label>
+          <label>
+            Part No *
+            <input type="text" formControlName="PartNo" (ngModelChange)="getProcess()" placeholder="Enter part number"
+              required />
+            <div *ngIf="partNoSuggestions.length > 0">
+              <ul>
+                <li *ngFor="let partNo of partNoSuggestions">{{ partNo }}</li>
+              </ul>
+            </div>
+          </label>
+
+          <label>
+            Process
+            <div class="custom-select">
+              <mat-select formControlName="Process" (ngModelChange)="getMC()">
+                <mat-option *ngFor="let option of processOptions" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </div>
+          </label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <div class="two-cols">
+          <label>
+            MC
+            <div class="custom-select">
+              <mat-select formControlName="MC">
+                <mat-option *ngFor="let mc of MCOptions" [value]="mc">{{ mc }}</mat-option>
+              </mat-select>
+            </div>
+          </label>
+          <label>
+            M/C No.
+            <input type="text" name="mcNo" placeholder="Machine Number" required />
+          </label>
+
+          <label>
+            Rev Part *
+            <input name="revPart" placeholder="Drawing" required />
+          </label>
+        </div>
+
+        <div class="two-cols">
+          <label>
+            Case
+            <div class="custom-select">
+              <mat-select [(value)]="selectedCase">
+                <mat-option *ngFor="let Case of Cases" [value]="Case.Case">
+                  {{ Case.viewCase }}
+                </mat-option>
+              </mat-select>
+            </div>
+          </label>
+          <label>
+            Date of Req.
+            <input type="date" formnovalidate="dd-mm-yyyy" name="dateOfReq" required />
+          </label>
+
+
+        </div>
+
+
+      </fieldset>
+      <div class="btns">
+        <button type="submit" class="sub-button">Show Item</button>
+        <input class="red-button" type="button" value="Clear" (click)="requestForm.reset()" />
+      </div>
+    </form>
+
+
+    <div class="table-container">
+      <h3 style="text-align: center; font-weight: 900; font-size: 18px">
+        Your Request
+      </h3>
+      <div class="mat-elevation-z8">
+        <div *ngIf="dataSource.data.length > 0">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+              <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle() : null"
+                  [checked]="selection.hasValue() && isAllSelected()"
+                  [indeterminate]="selection.hasValue() && !isAllSelected()"
+                  aria-label="Select all rows"></mat-checkbox>
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                  [checked]="selection.isSelected(row)" aria-label="Select row {{ row.No }}"></mat-checkbox>
+              </td>
+            </ng-container>
+
+            <!-- No. Column -->
+            <ng-container matColumnDef="No">
+              <th mat-header-cell *matHeaderCellDef>No.</th>
+              <td mat-cell *matCellDef="let element">{{ element.No }}</td>
+            </ng-container>
+
+            <!-- Part No Column -->
+            <ng-container matColumnDef="PartNo">
+              <mat-header-cell *matHeaderCellDef> Part No </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.PartNo }} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="ItemNo">
+              <mat-header-cell *matHeaderCellDef> Item No </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.ItemNo }} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="MC">
+              <mat-header-cell *matHeaderCellDef> MC </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.MC }} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Master_Tooling_ID">
+              <mat-header-cell *matHeaderCellDef> Master Tooling ID </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.Master_Tooling_ID }} </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="Process">
+              <mat-header-cell *matHeaderCellDef> Process </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.Process }} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Spec">
+              <mat-header-cell *matHeaderCellDef> Spec </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.Spec }} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="Usage_pcs">
+              <mat-header-cell *matHeaderCellDef> Usage pcs </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{ element.Usage_pcs }} </mat-cell>
+            </ng-container>
+
+            <!-- Qty Column -->
+            <ng-container matColumnDef="Qty">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Qty</th>
+              <td mat-cell *matCellDef="let element">
+                <mat-form-field class="input-field">
+                  <input matInput class="input-element">
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <!-- Result1 Column -->
+            <ng-container matColumnDef="Result1">
+              <th mat-header-cell *matHeaderCellDef>Result1</th>
+              <td mat-cell *matCellDef="let element">
+                <mat-form-field class="input-field">
+                  <input matInput class="input-element">
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <!-- Result2 Column -->
+            <ng-container matColumnDef="Result2">
+              <th mat-header-cell *matHeaderCellDef>Result2</th>
+              <td mat-cell *matCellDef="let element">
+                <mat-form-field class="input-field">
+                  <input matInput class="input-element">
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <!-- Result3 Column -->
+            <ng-container matColumnDef="Result3">
+              <th mat-header-cell *matHeaderCellDef>Result3</th>
+              <td mat-cell *matCellDef="let element">
+                <mat-form-field class="input-field">
+                  <input matInput class="input-element">
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <!-- Result4 Column -->
+            <ng-container matColumnDef="Result4">
+              <th mat-header-cell *matHeaderCellDef>Result4</th>
+              <td mat-cell *matCellDef="let element">
+                <mat-form-field class="input-field">
+                  <input matInput class="input-element">
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <!-- Result5 Column -->
+            <ng-container matColumnDef="Result5">
+              <th mat-header-cell *matHeaderCellDef>Result5</th>
+              <td mat-cell *matCellDef="let element">
+                <mat-form-field class="input-field">
+                  <input matInput class="input-element">
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <!-- Result6 Column -->
+            <ng-container matColumnDef="Result6">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Result6</th>
+              <td mat-cell *matCellDef="let element">
+                <mat-form-field class="input-field">
+                  <input matInput class="input-element">
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <!-- Table rows -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns" [class.selected]="selection.isSelected(row)">
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="btns">
+      <button type="submit" class="sub-button">Submit ➤</button>
+    </div>
+  </div>
+
+</div>

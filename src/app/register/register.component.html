@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="header">
+    <h1>Registration</h1>
+  </div>
+
+  <mat-card>
+    <mat-card-content>
+      <form class="example-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="example-full-width">
+          <mat-label>Emp.Code</mat-label>
+          <input matInput formControlName="Emp_Code" />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="Emp_Name" />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Sur Name</mat-label>
+          <input matInput formControlName="Emp_Surname" />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Position</mat-label>
+          <input matInput formControlName="Emp_Position" />
+        </mat-form-field>
+
+        <div class="btn-log">
+          <button mat-raised-button color="primary" style="margin: 10px;">Register</button>
+          <a routerLink="/login"><button mat-raised-button color="accent">Back to login</button></a>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

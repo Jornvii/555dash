@@ -1,0 +1,40 @@
+{
+  "user": [
+    {
+      "id": "A1234",
+      "name": "vorn",
+      "password": "A@12345a",
+      "email": "a@cost.com",
+      "gender": "male",
+      "role": "",
+      "isactive": false
+    },
+    {
+      "id": "A1234",
+      "name": "Vorn",
+      "password": "A@123456b",
+      "email": "A@mail.com",
+      "gender": "male",
+      "role": "",
+      "isactive": false
+    },
+    {
+      "id": "idtest",
+      "name": "kong",
+      "password": "K@bhxgs14342",
+      "email": "kthegvorn2k@gmail.com",
+      "gender": "male",
+      "role": "",
+      "isactive": false
+    },
+    {
+      "id": "kong1",
+      "name": "kongkong",
+      "password": "Kong@1234a",
+      "email": "Kong@male",
+      "gender": "male",
+      "role": "",
+      "isactive": false
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { catchError, Observable, throwError } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthService {
+  private apiUrl = 'http://localhost:3000/api';
+  private empCode: string = '';
+  constructor(private http: HttpClient) {}
+
+  //loginnnnnnnnnnnnnnnnnnnnnnnnn
+  authStatus: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  login(empCode: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login`, { Emp_Code: empCode });
+  }
+  setEmpCode(empCode: string): void {
+    this.empCode = empCode;
+  }
+
+  getEmpCode(): Observable<string> {
+    return this.http.get<string>('api/empCode');
+  }
+
+  isLoggedIn(): boolean {
+    if (typeof localStorage !== 'undefined') {
+      return !!localStorage.getItem('token');
+    }
+    return false;
+  }
+  //loginnnnnnnnnnnnnnnnnnnnnnnnn
+
+  register(employee: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/register`, employee);
+  }
+
+  //Request  Tooooooooooooooooooool
+  getProcesses(partNo: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<any>(this.apiUrl, { PartNo: partNo }, { headers });
+  }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+  getProcesses(partNo: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/getProcesses`, {
+      PartNo: partNo,
+    });
+  }
+
+  getMachines(partNo: string, process: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/getMachines`, {
+      PartNo: partNo,
+      Process: process,
+    });
+  }
+
+  getDetails(partNo: string, process: string, mc: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/getDetails`, {
+      PartNo: partNo,
+      Process: process,
+      MC: mc,
+    });
+  }
+
+
+
+
+
+
+
+
+
+ // Error handling
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'Unknown error!';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side errors
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side errors
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    return (errorMessage);
+  }

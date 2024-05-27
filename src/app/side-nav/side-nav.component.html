@@ -1,0 +1,45 @@
+<div class="nav-container">
+  <div class="nav-items">
+    <div class="nav-item" routerLink="/dashboard" routerLinkActive="active">
+      <fa-icon [icon]="faDashboard"></fa-icon>
+      <span>Dashboard</span>
+    </div>
+
+    <div class="nav-item" [routerLink]="'/request'" routerLinkActive="active">
+      <fa-icon [icon]="faLocation"></fa-icon>
+      <span>Request</span>
+    </div>
+
+    <div class="nav-item" routerLink="/list-request" routerLinkActive="active">
+      <fa-icon [icon]="faShop"></fa-icon>
+      <span>List-Request</span>
+    </div>
+    <!-- <div class="nav-item" routerLink="/issue" routerLinkActive="active">
+      <fa-icon [icon]="faExclamationCircle"></fa-icon>
+      <span>Issue</span>
+  </div> -->
+
+    <!-- <div class="nav-item" routerLink="/return" routerLinkActive="active">
+      <fa-icon [icon]="faUndo"></fa-icon>
+      <span>Issue</span>
+    </div> -->
+    <div class="nav-item" routerLink="/history" routerLinkActive="active">
+      <fa-icon [icon]="faChartLine"></fa-icon>
+      <span>History</span>
+    </div>
+
+    <!-- <div class="nav-item" routerLink="/confirm" routerLinkActive="active">
+      <fa-icon [icon]="faMoneyBill"></fa-icon>
+      <span>Set Gauge</span>
+    </div> -->
+
+    <div class="nav-item" routerLink="/calculate" routerLinkActive="active">
+      <fa-icon [icon]="faChartBar"></fa-icon>
+      <span>Summary</span>
+    </div>
+    <div class="nav-item" routerLink="/admin" routerLinkActive="active">
+      <fa-icon [icon]="faContactBook"></fa-icon>
+      <span>Admin</span>
+    </div>
+  </div>
+</div>

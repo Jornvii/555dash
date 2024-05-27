@@ -1,0 +1,34 @@
+<!-- <div class="header">
+  <div *ngIf="isLoggedIn">
+    <div class="logo">
+      <img src="" alt="">
+      <span class="s-logo">Order Item Cutting Tool</span>
+    </div>
+
+    <div class="dropdown">
+      <div class="dropdown-btn">{{ empCode }}</div>
+      <div class="dropdown-content">
+        <a (click)="logout()">Log out</a>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="header">
+  <div class="logo">
+   Order Item Cutting Tool
+  </div>
+
+  <div *ngIf="!isLoggedIn(); else loggedInContent" class="dropdown">
+    <a class="login" routerLink="/login">Login</a>
+  </div>
+
+  <ng-template #loggedInContent>
+    <div class="dropdown">
+      <div class="dropdown-btn">{{ empCode }}</div>
+        <button class="dropdown-content" (click)="logout()">Logout</button>
+
+    </div>
+  </ng-template>
+</div>

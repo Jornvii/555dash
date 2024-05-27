@@ -1,0 +1,73 @@
+
+<div class="container">
+
+<h3 style="text-align: center; font-weight: 900;font-size: 18px;">List Request</h3>
+
+
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+  <!-- 1. NO Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- 2Date Request -->
+  <ng-container matColumnDef="datereq">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Date Req. </th>
+    <td mat-cell *matCellDef="let element"> {{element.datereq}} </td>
+  </ng-container>
+  <!-- 3Doc Column -->
+  <ng-container matColumnDef="part">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Doc NO. </th>
+    <td mat-cell *matCellDef="let element"> {{element.part}} </td>
+  </ng-container>
+
+  <!--4 Part Number Column -->
+  <ng-container matColumnDef="mc">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Part No </th>
+    <td mat-cell *matCellDef="let element"> {{element.mc}} </td>
+  </ng-container>
+<!--5 proces Column -->
+  <ng-container matColumnDef="process">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Process </th>
+    <td mat-cell *matCellDef="let element"> {{element.process}} </td>
+  </ng-container>
+
+<!--6 Area Column -->
+  <ng-container matColumnDef="area">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Area </th>
+    <td mat-cell *matCellDef="let element"> {{element.area}} </td>
+  </ng-container>
+<!--7 request by -->
+<ng-container matColumnDef="reqby">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Request by </th>
+    <td mat-cell *matCellDef="let element"> {{element.reqby}} </td>
+  </ng-container>
+<!--8 status  -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> status </th>
+    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+  </ng-container>
+
+  <!-- click to Issue Gauge  -->
+
+  <ng-container matColumnDef="setgauge">
+    <th mat-header-cell *matHeaderCellDef>Set Gauge</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="Accent-green" (click)="element">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 25, 50]" showFirstLastButtons></mat-paginator>
+</div>

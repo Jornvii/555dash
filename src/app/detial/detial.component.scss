@@ -1,0 +1,130 @@
+
+// .invoice-form {
+//   border: 1px solid #ccc;
+//   font-family: Arial, sans-serif;
+//   width: 21cm; /* A4 width */
+//   height: 29.7cm; /* A4 height */
+//   // height: max-content;
+//   margin: 0 auto;
+//   padding: 2cm; /* Margins */
+.invoice-form {
+  width: 210mm;
+  padding: 20mm;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+
+  .header-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .header {
+      flex-grow: 1;
+      text-align: center;
+    }
+
+
+
+    h4 {
+      margin: 5px 0;
+
+      span {
+        font-weight: bold;
+      }
+    }
+
+    .header-right {
+      h4,
+      p {
+        margin: 5px 0;
+        font-size: 14px;
+
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .invoice-body {
+    .header-invoice {
+      display: flex;
+      justify-content: space-between;
+
+      .header-left {
+        p {
+          margin: 5px 0;
+          font-size: 14px;
+
+          span {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .body-table {
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+
+        th,
+        td {
+          border: 1px solid #ccc;
+          padding: 8px;
+          text-align: center; // Center text in table cells
+        }
+
+        th {
+          background-color: #f2f2f2;
+        }
+      }
+    }
+
+    .footer-invoice-1,
+    .footer-invoice-2 {
+      margin-top: 20px;
+    }
+
+    .footer-invoice-1 {
+      border: solid 1px #ccc;
+      padding: 15px;
+      display: grid;
+      grid-template-columns: 1fr 1fr auto;
+      gap: 10px;
+      margin-top: 20px;
+      .footer-invoice-2 {
+        margin-top: 10px;
+        border: solid 1px #ccc;
+        padding: 5px;
+      }
+      .footer-left,
+      .footer-mid,
+      .footer-right {
+        display: flex;
+        flex-direction: column;
+      }
+
+      p {
+        margin: 5px 0;
+      }
+
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+}
+  .docnum{
+    // text-align: center;
+    // padding-top: 5px;
+    // margin: 10px;
+    border: 1px dashed #ccc;
+    span{
+      color: gray;
+      padding-top: 5px;
+
+    }
+  }

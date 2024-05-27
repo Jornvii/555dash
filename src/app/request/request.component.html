@@ -1,0 +1,201 @@
+<div class="wrapper">
+  <div class="container">
+    <h1>Form Request</h1>
+    <form [formGroup]="requestForm" (ngSubmit)="onSubmit()">
+      <fieldset>
+        <div class="two-cols">
+          <label>
+            Part No *
+            <input type="text" formControlName="PartNo" placeholder="Enter part number" required (change)="onPartNoChange()" />
+          </label>
+        </div>
+        <div class="two-cols">
+          <label>
+            Process
+            <div class="custom-select">
+              <mat-select formControlName="Process" (selectionChange)="onProcessChange()">
+                <mat-option *ngFor="let option of processOptions" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </div>
+          </label>
+        </div>
+        <div class="two-cols">
+          <label>
+            MC
+            <div class="custom-select">
+              <mat-select formControlName="MC">
+                <mat-option *ngFor="let mc of MCOptions" [value]="mc">{{ mc }}</mat-option>
+              </mat-select>
+            </div>
+          </label>
+        </div>
+      </fieldset>
+      <div class="btns">
+        <button type="submit" class="sub-button">Show Item</button>
+        <input class="red-button" type="button" value="Clear" (click)="requestForm.reset()" />
+      </div>
+    </form>
+
+    <div class="table-container">
+      <h3 style="text-align: center; font-weight: 900; font-size: 18px">Your Request</h3>
+      <div class="mat-elevation-z8">
+        <div *ngIf="dataSource.data.length > 0">
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+              <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? masterToggle() : null"
+                  [checked]="selection.hasValue() && isAllSelected()"
+                  [indeterminate]="selection.hasValue() && !isAllSelected()"
+                  aria-label="Select all rows"></mat-checkbox>
+              </th>
+              <td mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+                  [checked]="selection.isSelected(row)" aria-label="Select row {{ row.No }}"></mat-checkbox>
+              </td>
+            </ng-container>
+
+            <!-- Part No Column -->
+            <ng-container matColumnDef="part_no">
+              <th mat-header-cell *matHeaderCellDef> Part No </th>
+              <td mat-cell *matCellDef="let element"> {{ element.part_no }} </td>
+            </ng-container>
+
+            <!-- Process Column -->
+            <ng-container matColumnDef="process">
+              <th mat-header-cell *matHeaderCellDef> Process </th>
+              <td mat-cell *matCellDef="let element"> {{ element.process }} </td>
+            </ng-container>
+
+            <!-- MC Column -->
+            <ng-container matColumnDef="mc">
+              <th mat-header-cell *matHeaderCellDef> MC </th>
+              <td mat-cell *matCellDef="let element"> {{ element.mc }} </td>
+            </ng-container>
+
+            <!-- Item No Column -->
+            <ng-container matColumnDef="item_no">
+              <th mat-header-cell *matHeaderCellDef> Item No </th>
+              <td mat-cell *matCellDef="let element"> {{ element.item_no }} </td>
+            </ng-container>
+
+            <!-- Master Tooling ID Column -->
+            <ng-container matColumnDef="master_tooling_id">
+              <th mat-header-cell *matHeaderCellDef> Master Tooling ID </th>
+              <td mat-cell *matCellDef="let element"> {{ element.master_tooling_id }} </td>
+            </ng-container>
+
+            <!-- Spec Column -->
+            <ng-container matColumnDef="spec">
+              <th mat-header-cell *matHeaderCellDef> Spec </th>
+              <td mat-cell *matCellDef="let element"> {{ element.spec }} </td>
+            </ng-container>
+
+            <!-- Usage pcs Column -->
+            <ng-container matColumnDef="usage_pcs">
+              <th mat-header-cell *matHeaderCellDef> Usage pcs </th>
+              <td mat-cell *matCellDef="let element"> {{ element.usage_pcs }} </td>
+            </ng-container>
+
+            <!-- Qty Column -->
+            <ng-container matColumnDef="qty">
+              <th mat-header-cell *matHeaderCellDef> Qty </th>
+              <td mat-cell *matCellDef="let element">
+                <mat-form-field class="input-field">
+                  <input matInput [(ngModel)]="element.qty">
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <!-- Result1 Column -->
+            <ng-container matColumnDef="result1">
+              <th mat-header-cell *matHeaderCellDef> Result1 </th>
+              <td mat-cell *matCellDef="let element">
+                <mat-form-field class="input-field">
+                  <input matInput [(ngModel)]="element.result1">
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <!-- Result2 Column -->
+            <ng-container matColumnDef="result2">
+              <th mat-header-cell *matHeaderCellDef> Result2 </th>
+              <td mat-cell *matCellDef="let element">
+                <mat-form-field class="input-field">
+                  <input matInput [(ngModel)]="element.result2">
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <!-- Result3 Column -->
+            <ng-container matColumnDef="result3">
+              <th mat-header-cell *matHeaderCellDef> Result3 </th>
+              <td mat-cell *matCellDef="let element">
+                <mat-form-field class="input-field">
+                  <input matInput [(ngModel)]="element.result3">
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <!-- Result4 Column -->
+            <ng-container matColumnDef="result4">
+              <th mat-header-cell *matHeaderCellDef> Result4 </th>
+              <td mat-cell *matCellDef="let element">
+                <mat-form-field class="input-field">
+                  <input matInput [(ngModel)]="element.result4">
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <!-- Result5 Column -->
+            <ng-container matColumnDef="result5">
+              <th mat-header-cell *matHeaderCellDef> Result5 </th>
+              <td mat-cell *matCellDef="let element">
+                <mat-form-field class="input-field">
+                  <input matInput [(ngModel)]="element.result5">
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+            <!-- Result6 Column -->
+            <ng-container matColumnDef="result6">
+              <th mat-header-cell *matHeaderCellDef> Result6 </th>
+              <td mat-cell *matCellDef="let element">
+                <mat-form-field class="input-field">
+                  <input matInput [(ngModel)]="element.result6">
+                </mat-form-field>
+              </td>
+            </ng-container>
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="additional-inputs">
+      <h3>Additonal Information</h3>
+      <form [formGroup]="additionalForm">
+        <div class="input-field">
+          <label>Position *</label>
+          <input type="text" formControlName="Position" placeholder="Enter position" required />
+        </div>
+        <div class="input-field">
+          <label>Department *</label>
+          <input type="text" formControlName="Department" placeholder="Enter department" required />
+        </div>
+        <div class="input-field">
+          <label>Phone Number *</label>
+          <input type="text" formControlName="PhoneNumber" placeholder="Enter phone number" required />
+        </div>
+      </form>
+    </div>
+
+    <div class="btns">
+      <button type="button" class="sub-button" (click)="onSubmitRequest()">Submit ➤</button>
+    </div>
+  </div>
+</div>

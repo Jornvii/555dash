@@ -1,0 +1,53 @@
+table {
+  width: 100%;
+}
+
+.mat-elevation-z8 {
+  text-align: center;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+.mat-elevation-z8 th, .mat-elevation-z8 td {text-align: center;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.mat-elevation-z8 th {
+  border: 1px solid #ddd;
+  background-color: #9bb8f5;
+  text-align: center;
+}
+
+.mat-elevation-z8 tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.mat-elevation-z8 tr:hover {
+  background-color: #ddd;
+}
+.mat-elevation-z8 td:first-child {
+  text-align: center;
+  width: 50px;
+}
+
+
+
+$default-color: #000;
+$clicked-color: #ff0000;
+
+// Define styles for the mat-icon element
+mat-icon {
+  color: $default-color; // Set the default color
+  transition: color 0.3s; // Add transition for smooth color change
+
+  &:hover{
+    background-color:  rgb(125, 198, 16);
+    border-radius: 50%;
+
+  }
+  &:active {
+    color: $clicked-color; // Change the color when clicked
+  }
+}

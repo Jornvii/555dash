@@ -1,0 +1,32 @@
+.main-container {
+  display: flex;
+
+  .side-nav {transition: all 0.5s;
+    width: 150px;
+    min-width: 230px;
+
+    min-height: calc(100vh - 70px);
+    background-color: #106cb7;
+    color: #fff;
+    box-shadow: 5px 5px 5px #939399;
+
+    @media only screen and (max-width: 770px) {
+      width: 70px;
+      min-width: 60px;
+      transition: all 0.5s;
+    }
+    // @media only screen and (max-width: 1024px) {
+    //   .side-nav{
+    //     height: 30vh;
+    //   transition: all 0.5s;
+    //   }
+    // }
+
+
+  }
+
+  .main {
+    flex: 1; /* Adjusts the main content area to take up remaining space */
+    padding: 20px;
+  }
+}

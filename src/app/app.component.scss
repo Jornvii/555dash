@@ -1,0 +1,59 @@
+.main-container {
+  display: flex;
+  padding-top: 55px;
+
+  .side-nav {
+    transition: all 0.5s;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 150px;
+    min-width: 220px;
+    // this is widht of navbar at the left page
+    min-height: calc(100vh - 80px);
+    background-color: #0466c8;
+    color: #fff;
+    box-shadow: 5px 5px 5px #939399;
+
+    @media only screen and (max-width: 770px) {
+      width: 70px;
+      min-width: 60px;
+      transition: all 0.5s;
+    }
+  }
+
+  .main {
+    flex: 1;
+    padding: 20px;
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+.main-container {
+  display: flex;
+  position: relative;
+}
+
+.side-nav {
+  width: 150px;
+  min-width: 220px;
+  // min-height: calc(100vh - 70px);
+  background-color: #106cb7;
+  color: #fff;
+  box-shadow: 5px 5px 5px #939399;
+  transition: all 0.5s;
+
+  @media only screen and (max-width: 770px) {
+    width: 70px;
+    min-width: 60px;
+  }
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
